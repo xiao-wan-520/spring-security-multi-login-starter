@@ -24,7 +24,7 @@
 multi-login:
   enabled: true
   methods:
-    - name: phone        # 只是标识，无实际作用
+    - name: phone
       process-url: /login/phone
       http-method: POST
       param-name:
@@ -42,7 +42,7 @@ multi-login:
 @Service("phoneLoginService")
 public class PhoneLoginService implements BusinessAuthenticationLogic {
     @Override
-    public Object authenticate(Map<String, Object> allParams) throws AuthenticationException {
+    public Object authenticate(Map<String, String> allParams) throws AuthenticationException {
         // ... 业务校验逻辑 ...
         return new User("user-" + allParams.get("phone"));
     }
@@ -62,7 +62,6 @@ public class PhoneLoginService implements BusinessAuthenticationLogic {
 > 此配置实现了两种登录方式（`phone`, `email`），并支持两种客户端（`customer`, `employee`）。
 
 ```yaml
-# 开发者项目中的 application.yml 配置
 multi-login:
   # 开启多方式登录 Starter
   enabled: true
@@ -75,12 +74,12 @@ multi-login:
       - employee
     handler:
       success: jsonLoginSuccessHandler
-  #      failure: jsonLoginFailureHandler
+#      failure: jsonLoginFailureHandler
 
   # 定义所有登录方式的列表
   methods:
     # --- 1. 手机号验证码登录配置 ---
-    - name: phone
+    phone:
       # 登录请求的路径和方式
       process-url: /login/phone
       http-method: POST
@@ -89,20 +88,18 @@ multi-login:
         - phone
         - nickname
         - role
-        - captcha
       # Token中用于认证的主体（principal）和凭证（credential）字段名
       principal-param-name:
         - phone
       credential-param-name:
         - role
-        - captcha
       # 认证Provider的实现类名（开发者必须提供的Bean）
       provider-bean-name:
         - phoneCustomerLoginService
         - phoneEmployeeLoginService
 
     # --- 2. 邮箱验证码登录配置 ---
-    - name: email    # 默认 process-url: /login/email
+    email: # 默认 process-url: /login/email
       principal-param-name: email    # 默认 param-name = principal-param-name + credential-param-name
       credential-param-name:
         - captcha
@@ -126,3 +123,26 @@ multi-login:
 | **默认 Handler**         | 成功和失败处理器提供简单的 String 返回默认实现，无需额外配置。 | `DefaultSuccessHandler` 和 `DefaultFailureHandler` |
 | **极简业务层**           | 开发者只需实现 `BusinessAuthenticationLogic` 接口。          | 业务层与 Spring Security 解耦                      |
 | **Spring Security 集成** | 通过注入 `SecurityFilterChain` Bean，将动态 Filter 注册到认证链中。 | `MultiLoginSecurityConfigure`                      |
+
+
+
+```yaml
+multi-login:
+  enabled: true
+  methods:
+    phone:
+      principal-param-name: phone
+      credential-param-name: captcha
+      provider-bean-name: phoneLoginService
+    email:
+      principal-param-name: email
+      credential-param-name:
+        - captcha
+        - role
+      provider-bean-name: emailLoginService
+```
+
+
+
+
+

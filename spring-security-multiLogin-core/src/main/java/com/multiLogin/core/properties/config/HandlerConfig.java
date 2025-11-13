@@ -1,4 +1,4 @@
-package com.multiLongin.core.properties.config;
+package com.multiLogin.core.properties.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

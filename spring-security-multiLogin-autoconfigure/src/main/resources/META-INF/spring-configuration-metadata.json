@@ -2,20 +2,20 @@
   "groups": [
     {
       "name": "multi-login",
-      "type": "com.multiLongin.core.properties.MultiLoginProperties",
-      "sourceType": "com.multiLongin.core.properties.MultiLoginProperties",
+      "type": "com.multiLogin.core.properties.MultiLoginProperties",
+      "sourceType": "com.multiLogin.core.properties.MultiLoginProperties",
       "prefix": "multi-login"
     },
     {
       "name": "multi-login.global",
-      "type": "com.multiLongin.core.properties.config.GlobalConfig",
-      "sourceType": "com.multiLongin.core.properties.config.GlobalConfig",
+      "type": "com.multiLogin.core.properties.config.GlobalConfig",
+      "sourceType": "com.multiLogin.core.properties.config.GlobalConfig",
       "prefix": "multi-login.global"
     },
     {
       "name": "multi-login.global.handler",
-      "type": "com.multiLongin.core.properties.config.HandlerConfig",
-      "sourceType": "com.multiLongin.core.properties.config.HandlerConfig",
+      "type": "com.multiLogin.core.properties.config.HandlerConfig",
+      "sourceType": "com.multiLogin.core.properties.config.HandlerConfig",
       "prefix": "multi-login.global.handler"
     }
   ],
@@ -52,68 +52,63 @@
     },
     {
       "name": "multi-login.methods",
-      "type": "java.util.List<com.multiLongin.core.properties.config.LoginMethodConfig>",
+      "type": "java.util.Map<java.lang.String, com.multiLogin.core.properties.config.LoginMethodConfig>",
       "description": "定义每种登录方式（如 phone, email）的详细配置."
     },
     {
-      "name": "multi-login.methods[].name",
-      "type": "java.lang.String",
-      "description": "登录方式的唯一名称，如 'phone' 或 'email'."
-    },
-    {
-      "name": "multi-login.methods[].process-url",
+      "name": "multi-login.methods.*.process-url",
       "type": "java.lang.String",
       "description": "该登录方式的认证请求处理 URL.",
-      "defaultValue": "/login/{name}"
+      "defaultValue": "/login/{key}"
     },
     {
-      "name": "multi-login.methods[].http-method",
+      "name": "multi-login.methods.*.http-method",
       "type": "java.lang.String",
       "description": "认证请求的 HTTP 方法，如 'POST'..",
       "defaultValue": "POST"
     },
     {
-      "name": "multi-login.methods[].param-name",
+      "name": "multi-login.method.*.param-name",
       "type": "java.util.List<java.lang.String>",
       "description": "需要从请求中提取的所有普通附加参数名列表, 默认为principal-param-name与credential-param-name参数和."
     },
     {
-      "name": "multi-login.methods[].principal-param-name",
+      "name": "multi-login.methods.*.principal-param-name",
       "type": "java.util.List<java.lang.String>",
       "description": "用作认证主体（Principal）的参数名列表。BaseMultiLoginToken.getPrincipal() 将返回该列表的值."
     },
     {
-      "name": "multi-login.methods[].credential-param-name",
+      "name": "multi-login.methods.*.credential-param-name",
       "type": "java.util.List<java.lang.String>",
       "description": "用作认证凭证（Credential）的参数名列表。BaseMultiLoginToken.getCredentials() 将返回该列表的值."
     },
     {
-      "name": "multi-login.methods[].provider-bean-name",
+      "name": "multi-login.methods.*.provider-bean-name",
       "type": "java.util.List<java.lang.String>",
       "description": "业务逻辑实现类 (BusinessAuthenticationLogic) 的 Spring Bean 名称列表，必须与 client-types 的顺序和数量严格对应."
     },
     {
-      "name": "multi-login.methods[].request-client-header",
+      "name": "multi-login.methods.*.request-client-header",
       "type": "java.lang.String",
       "description": "方法级别的客户端请求头名称，如果设置，将覆盖全局配置."
     },
     {
-      "name": "multi-login.methods[].client-types",
+      "name": "multi-login.methods.*.client-types",
       "type": "java.util.List<java.lang.String>",
       "description": "方法级别的客户端类型列表，如果设置，将覆盖全局配置."
     },
     {
-      "name": "multi-login.methods[].handler",
-      "type": "com.multiLongin.core.properties.config.HandlerConfig",
+      "name": "multi-login.methods.*.handler",
+      "type": "com.multiLogin.core.properties.config.HandlerConfig",
       "description": "方法级别的认证成功/失败处理器配置，如果设置，将覆盖全局配置."
     },
     {
-      "name": "multi-login.methods[].handler.success",
+      "name": "multi-login.methods.*.handler.success",
       "type": "java.lang.String",
       "description": "方法级别的认证成功处理器 Bean 名称."
     },
     {
-      "name": "multi-login.methods[].handler.failure",
+      "name": "multi-login.methods.*.handler.failure",
       "type": "java.lang.String",
       "description": "方法级别的认证失败处理器 Bean 名称."
     }

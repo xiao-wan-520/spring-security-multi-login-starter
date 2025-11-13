@@ -1,12 +1,13 @@
 package com.multiLogin.autoconfigure;
 
 import com.multiLogin.autoconfigure.config.DefaultLoginHandlerConfig;
-import com.multiLongin.core.DynamicAuthenticationFilter;
-import com.multiLongin.core.RouterAuthenticationProvider;
-import com.multiLongin.core.properties.MultiLoginProperties;
-import com.multiLongin.core.properties.config.HandlerConfig;
-import com.multiLongin.core.properties.config.LoginMethodConfig;
-import com.multiLongin.core.service.BusinessAuthenticationLogic;
+import com.multiLogin.core.DynamicAuthenticationFilter;
+import com.multiLogin.core.RouterAuthenticationProvider;
+import com.multiLogin.core.properties.MultiLoginProperties;
+import com.multiLogin.core.properties.config.HandlerConfig;
+import com.multiLogin.core.properties.config.LoginMethodConfig;
+import com.multiLogin.core.service.BusinessAuthenticationLogic;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -24,20 +25,17 @@ import java.util.Optional;
 
 /**
  * @author wan
+ * 配置过滤器
  */
 @AutoConfiguration
 @Import(DefaultLoginHandlerConfig.class)
 @EnableConfigurationProperties(MultiLoginProperties.class)
+@RequiredArgsConstructor
 @ConditionalOnProperty(prefix = "multi-login", name = "enabled", havingValue = "true")
 public class MultiLoginAutoConfiguration {
 
     private final MultiLoginProperties properties;
     private final ApplicationContext applicationContext;
-
-    public MultiLoginAutoConfiguration(MultiLoginProperties properties, ApplicationContext applicationContext) {
-        this.properties = properties;
-        this.applicationContext = applicationContext;
-    }
 
     /**
      * 自动装配所有的自定义认证过滤器
@@ -47,7 +45,7 @@ public class MultiLoginAutoConfiguration {
     public List<AbstractAuthenticationProcessingFilter> multiLoginFilters() {
         List<AbstractAuthenticationProcessingFilter> filters = new ArrayList<>();
 
-        for (LoginMethodConfig config : properties.getMethods()) {
+        for (LoginMethodConfig config : properties.getMethods().values()) {
             // 获取业务 Provider Bean
             List<BusinessAuthenticationLogic> businessLogics = getBusinessProviders(config);
 

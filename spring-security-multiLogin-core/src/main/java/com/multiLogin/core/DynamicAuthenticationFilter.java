@@ -1,8 +1,8 @@
-package com.multiLongin.core;
+package com.multiLogin.core;
 
-import com.multiLongin.core.exception.MultiLoginException;
-import com.multiLongin.core.properties.config.GlobalConfig;
-import com.multiLongin.core.properties.config.LoginMethodConfig;
+import com.multiLogin.core.exception.MultiLoginException;
+import com.multiLogin.core.properties.config.GlobalConfig;
+import com.multiLogin.core.properties.config.LoginMethodConfig;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.Getter;
@@ -55,6 +55,7 @@ public class DynamicAuthenticationFilter extends AbstractAuthenticationProcessin
         return this.getAuthenticationManager().authenticate(token);
     }
 
+    // 可以暴露接口使外部能够拓展，比如使用json提交的数据这里解析不了
     private Map<String, String> extractAllParameters(HttpServletRequest request) {
         Map<String, String> params = new HashMap<>();
 
@@ -73,6 +74,7 @@ public class DynamicAuthenticationFilter extends AbstractAuthenticationProcessin
         return params;
     }
 
+    // 可以暴露接口使外部能欧拓展不使用请求头携带策略的方式
     private String extractClientType(HttpServletRequest request) {
         // 优先使用方法级配置，否则使用全局配置
         String requestClientHeader = Optional.ofNullable(config.getRequestClientHeader())

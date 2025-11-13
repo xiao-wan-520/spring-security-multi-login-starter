@@ -1,4 +1,4 @@
-package com.multiLongin.core.exception;
+package com.multiLogin.core.exception;
 
 /**
  * @author Lenovo

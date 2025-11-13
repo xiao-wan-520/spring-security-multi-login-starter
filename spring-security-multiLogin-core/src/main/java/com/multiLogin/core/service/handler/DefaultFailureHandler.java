@@ -1,4 +1,4 @@
-package com.multiLongin.core.service.handler;
+package com.multiLogin.core.service.handler;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

@@ -1,7 +1,7 @@
-package com.multiLongin.core;
+package com.multiLogin.core;
 
-import com.multiLongin.core.exception.MultiLoginException;
-import com.multiLongin.core.service.BusinessAuthenticationLogic;
+import com.multiLogin.core.exception.MultiLoginException;
+import com.multiLogin.core.service.BusinessAuthenticationLogic;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -27,12 +27,12 @@ public class RouterAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        // 1. 类型检查
+        // 类型检查
         if (!(authentication instanceof BaseMultiLoginToken token)) {
             return null;
         }
 
-        // 2. 路由：根据客户端类型查找对应的业务 Provider
+        // 路由：根据客户端类型查找对应的业务 Provider
         String clientType = token.getClientType();
         BusinessAuthenticationLogic businessLogic = businessProviders.get(clientType);
 
@@ -40,14 +40,14 @@ public class RouterAuthenticationProvider implements AuthenticationProvider {
             throw new MultiLoginException("Login method provider not configured for client type: " + clientType);
         }
 
-        // 3. 执行业务逻辑
+        // 执行业务逻辑
         Object principal = businessLogic.authenticate(token.getAllParams());
 
         if (principal == null) {
             throw new MultiLoginException("Authentication failed: User details is null.");
         }
 
-        // 4. 认证成功，设置已认证状态并返回
+        // 认证成功，设置已认证状态并返回
         token.setPrincipalDetails(principal);
         return token;
     }

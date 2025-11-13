@@ -1,4 +1,4 @@
-package com.multiLongin.core.properties.config;
+package com.multiLogin.core.properties.config;
 
 import lombok.Data;
 
@@ -11,8 +11,6 @@ import java.util.List;
  */
 @Data
 public class LoginMethodConfig {
-    // 登录方式，名称
-    private String name;
 
     // 登录的URL
     private String processUrl;
