@@ -49,7 +49,30 @@ public class PhoneLoginService implements BusinessAuthenticationLogic {
 }
 ```
 
-### 1.4 启动与测试
+### 1.4 配置`Spring Security`时使用框架的初始化方法
+
+```java
+@Configuration
+public class SecurityConfig {
+
+    @Resource
+    private MultiLoginSecurity multiLoginSecurity;
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        multiLoginSecurity.initializeMultiLoginFilters(http);          // 关键方法
+        http.csrf(AbstractHttpConfigurer::disable)
+                .cors(AbstractHttpConfigurer::disable)
+                .sessionManagement((sessionManagement) -> {
+                    sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                });
+        return http.build();
+    }
+
+}
+```
+
+### 1.5 启动与测试
 
 - **请求:** `POST` 到 `/login/phone`，携带参数 `phone` 和 `captcha`。
 - **客户端 Header:** **不需要**任何请求头。
@@ -74,7 +97,7 @@ multi-login:
       - employee
     handler:
       success: jsonLoginSuccessHandler
-#      failure: jsonLoginFailureHandler
+  #      failure: jsonLoginFailureHandler
 
   # 定义所有登录方式的列表
   methods:
