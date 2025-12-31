@@ -4,12 +4,12 @@
 
 ## 0. 核心设计原则
 
-| **原则**          | **描述**                                                     | **实现机制**                                                 |
-| ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **配置优先**      | 所有登录方式和客户端配置通过 `application.yml` 声明。        | `MultiLoginSecurityConfigure`                                |
-| **业务解耦**      | 开发者只需实现 `BusinessAuthenticationLogic` 业务逻辑接口，无需接触 Spring Security 底层接口。 | 业务层与 Spring Security 解耦                                |
-| **Provider 路由** | 根据客户端请求头，将认证请求路由到对应的业务 Provider。      | `RouterAuthenticationProvider` / `DynamicAuthenticationFilter` |
-| **极简集成**      | 通过注入 `MultiLoginSecurity`，将动态 Filter 注册到认证链中。 | `MultiLoginSecurityConfigure`                                |
+| **原则**          | **描述**                                                     |
+| ----------------- | ------------------------------------------------------------ |
+| **配置优先**      | 所有登录方式和客户端配置通过 `application.yml` 声明。        |
+| **业务解耦**      | 开发者只需实现 `BusinessAuthenticationLogic` 业务逻辑接口，无需接触 Spring Security 底层接口。 |
+| **Provider 路由** | 根据客户端请求头，将认证请求路由到对应的业务 Provider。      |
+| **极简集成**      | 通过注入 `MultiLoginSecurity`，将动态 Filter 注册到认证链中。 |
 
 
 ##  1. 快速入门 (Quick Start)
