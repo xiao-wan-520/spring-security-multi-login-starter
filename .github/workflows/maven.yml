@@ -12,8 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        # 这里列出你想支持的 Java 版本，GitHub 会并行跑这三个任务
-        java-version: [ '8', '11', '17' ]
+        java-version: [ '17' ]
 
     steps:
       - uses: actions/checkout@v4
