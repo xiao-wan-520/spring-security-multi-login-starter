@@ -1,6 +1,6 @@
 # multi-login-spring-security-starter
 
-![](https://img.shields.io/maven-central/v/io.github.xiao-wan-520/multi-login-spring-security-starter) [![Java CI with Maven](https://github.com/xiao-wan-520/multi-login-spring-security-starter/actions/workflows/maven.yml/badge.svg?branch=master)](https://github.com/xiao-wan-520/multi-login-spring-security-starter/actions/workflows/maven.yml)
+![](https://img.shields.io/maven-central/v/io.github.renhao-wan/multi-login-spring-security-starter) [![Java CI with Maven](https://github.com/xiao-wan-520/multi-login-spring-security-starter/actions/workflows/maven.yml/badge.svg?branch=master)](https://github.com/xiao-wan-520/multi-login-spring-security-starter/actions/workflows/maven.yml)
 
 `multi-login-spring-security-starter` 是一个配置驱动的 Spring Security 扩展包，旨在通过自动装配机制，极大地简化多方式登录（如手机验证码、邮箱密码等）和多客户端（如 Customer、Employee）的接入。
 
@@ -10,7 +10,7 @@
 **版本号请替换为GitHub/Maven中央仓库的最新版本**
 ```
 <dependency>
-    <groupId>io.github.xiao-wan-520</groupId>
+    <groupId>io.github.renhao-wan</groupId>
     <artifactId>multi-login-spring-security-starter</artifactId>
     <version>${latest.version}</version>
 </dependency>
