@@ -1,2 +1,2 @@
-com.multiLogin.autoconfigure.MultiLoginAutoConfiguration
-com.multiLogin.autoconfigure.MultiLoginSecurityAutoConfiguration
+io.github.renhaowan.multilogin.autoconfigure.MultiLoginAutoConfiguration
+io.github.renhaowan.multilogin.autoconfigure.MultiLoginSecurityAutoConfiguration

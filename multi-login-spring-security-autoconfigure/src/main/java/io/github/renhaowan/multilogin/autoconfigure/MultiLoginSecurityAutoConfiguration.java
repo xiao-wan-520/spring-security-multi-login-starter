@@ -1,6 +1,6 @@
-package com.multiLogin.autoconfigure;
+package io.github.renhaowan.multilogin.autoconfigure;
 
-import com.multiLogin.autoconfigure.config.MultiLoginSecurity;
+import io.github.renhaowan.multilogin.autoconfigure.config.MultiLoginSecurity;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.annotation.Import;
 

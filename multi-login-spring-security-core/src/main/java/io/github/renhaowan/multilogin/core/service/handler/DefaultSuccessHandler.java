@@ -1,4 +1,4 @@
-package com.multiLogin.core.service.handler;
+package io.github.renhaowan.multilogin.core.service.handler;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

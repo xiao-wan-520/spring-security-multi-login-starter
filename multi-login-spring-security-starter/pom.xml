@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>io.github.xiao-wan-520</groupId>
+        <groupId>io.github.renhao-wan</groupId>
         <artifactId>multi-login-spring-security-parent</artifactId>
-        <version>0.0.2</version>
+        <version>0.0.3</version>
     </parent>
 
     <name>Multi Login - Starter</name>
@@ -21,11 +21,11 @@
 
     <dependencies>
         <dependency>
-            <groupId>io.github.xiao-wan-520</groupId>
+            <groupId>io.github.renhao-wan</groupId>
             <artifactId>multi-login-spring-security-autoconfigure</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.github.xiao-wan-520</groupId>
+            <groupId>io.github.renhao-wan</groupId>
             <artifactId>multi-login-spring-security-core</artifactId>
         </dependency>
         <dependency>

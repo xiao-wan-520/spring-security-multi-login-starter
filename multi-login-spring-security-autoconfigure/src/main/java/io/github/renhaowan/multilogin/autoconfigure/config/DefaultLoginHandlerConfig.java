@@ -1,7 +1,7 @@
-package com.multiLogin.autoconfigure.config;
+package io.github.renhaowan.multilogin.autoconfigure.config;
 
-import com.multiLogin.core.service.handler.DefaultFailureHandler;
-import com.multiLogin.core.service.handler.DefaultSuccessHandler;
+import io.github.renhaowan.multilogin.core.service.handler.DefaultFailureHandler;
+import io.github.renhaowan.multilogin.core.service.handler.DefaultSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;

@@ -1,7 +1,7 @@
-package com.multiLogin.core;
+package io.github.renhaowan.multilogin.core;
 
-import com.multiLogin.core.exception.MultiLoginException;
-import com.multiLogin.core.service.BusinessAuthenticationLogic;
+import io.github.renhaowan.multilogin.core.exception.MultiLoginException;
+import io.github.renhaowan.multilogin.core.service.BusinessAuthenticationLogic;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;

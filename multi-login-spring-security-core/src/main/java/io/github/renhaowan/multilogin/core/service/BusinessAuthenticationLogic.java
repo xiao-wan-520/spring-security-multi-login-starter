@@ -1,4 +1,4 @@
-package com.multiLogin.core.service;
+package io.github.renhaowan.multilogin.core.service;
 
 import org.springframework.security.core.AuthenticationException;
 

@@ -1,4 +1,4 @@
-package com.multiLogin.core.properties.config;
+package io.github.renhaowan.multilogin.core.properties.config;
 
 import lombok.Data;
 

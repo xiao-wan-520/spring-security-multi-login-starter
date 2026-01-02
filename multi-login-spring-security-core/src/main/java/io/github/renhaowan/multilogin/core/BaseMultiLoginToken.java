@@ -1,4 +1,4 @@
-package com.multiLogin.core;
+package io.github.renhaowan.multilogin.core;
 
 import lombok.Getter;
 import org.springframework.security.authentication.AbstractAuthenticationToken;

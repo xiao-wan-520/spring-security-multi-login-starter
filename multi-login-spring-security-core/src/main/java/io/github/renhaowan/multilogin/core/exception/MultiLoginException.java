@@ -1,4 +1,4 @@
-package com.multiLogin.core.exception;
+package io.github.renhaowan.multilogin.core.exception;
 
 /**
  * @author Lenovo

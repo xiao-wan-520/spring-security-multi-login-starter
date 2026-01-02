@@ -1,6 +1,6 @@
-package com.multiLogin.autoconfigure.config;
+package io.github.renhaowan.multilogin.autoconfigure.config;
 
-import com.multiLogin.core.DynamicAuthenticationFilter;
+import io.github.renhaowan.multilogin.core.DynamicAuthenticationFilter;
 import jakarta.annotation.Resource;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;

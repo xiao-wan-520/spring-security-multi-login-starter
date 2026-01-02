@@ -1,8 +1,8 @@
-package com.multiLogin.core;
+package io.github.renhaowan.multilogin.core;
 
-import com.multiLogin.core.exception.MultiLoginException;
-import com.multiLogin.core.properties.config.GlobalConfig;
-import com.multiLogin.core.properties.config.LoginMethodConfig;
+import io.github.renhaowan.multilogin.core.exception.MultiLoginException;
+import io.github.renhaowan.multilogin.core.properties.config.GlobalConfig;
+import io.github.renhaowan.multilogin.core.properties.config.LoginMethodConfig;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.Getter;

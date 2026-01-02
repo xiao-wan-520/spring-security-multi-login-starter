@@ -2,20 +2,20 @@
   "groups": [
     {
       "name": "multi-login",
-      "type": "com.multiLogin.core.properties.MultiLoginProperties",
-      "sourceType": "com.multiLogin.core.properties.MultiLoginProperties",
+      "type": "io.github.renhaowan.multilogin.core.properties.MultiLoginProperties",
+      "sourceType": "io.github.renhaowan.multilogin.core.properties.MultiLoginProperties",
       "prefix": "multi-login"
     },
     {
       "name": "multi-login.global",
-      "type": "com.multiLogin.core.properties.config.GlobalConfig",
-      "sourceType": "com.multiLogin.core.properties.config.GlobalConfig",
+      "type": "io.github.renhaowan.multilogin.core.properties.config.GlobalConfig",
+      "sourceType": "io.github.renhaowan.multilogin.core.properties.config.GlobalConfig",
       "prefix": "multi-login.global"
     },
     {
       "name": "multi-login.global.handler",
-      "type": "com.multiLogin.core.properties.config.HandlerConfig",
-      "sourceType": "com.multiLogin.core.properties.config.HandlerConfig",
+      "type": "io.github.renhaowan.multilogin.core.properties.config.HandlerConfig",
+      "sourceType": "io.github.renhaowan.multilogin.core.properties.config.HandlerConfig",
       "prefix": "multi-login.global.handler"
     }
   ],
@@ -52,7 +52,7 @@
     },
     {
       "name": "multi-login.methods",
-      "type": "java.util.Map<java.lang.String, com.multiLogin.core.properties.config.LoginMethodConfig>",
+      "type": "java.util.Map<java.lang.String, io.github.renhaowan.multilogin.core.properties.config.LoginMethodConfig>",
       "description": "定义每种登录方式（如 phone, email）的详细配置."
     },
     {
@@ -99,7 +99,7 @@
     },
     {
       "name": "multi-login.methods.*.handler",
-      "type": "com.multiLogin.core.properties.config.HandlerConfig",
+      "type": "io.github.renhaowan.multilogin.core.properties.config.HandlerConfig",
       "description": "方法级别的认证成功/失败处理器配置，如果设置，将覆盖全局配置."
     },
     {

@@ -1,12 +1,12 @@
-package com.multiLogin.autoconfigure;
+package io.github.renhaowan.multilogin.autoconfigure;
 
-import com.multiLogin.autoconfigure.config.DefaultLoginHandlerConfig;
-import com.multiLogin.core.DynamicAuthenticationFilter;
-import com.multiLogin.core.RouterAuthenticationProvider;
-import com.multiLogin.core.properties.MultiLoginProperties;
-import com.multiLogin.core.properties.config.HandlerConfig;
-import com.multiLogin.core.properties.config.LoginMethodConfig;
-import com.multiLogin.core.service.BusinessAuthenticationLogic;
+import io.github.renhaowan.multilogin.autoconfigure.config.DefaultLoginHandlerConfig;
+import io.github.renhaowan.multilogin.core.DynamicAuthenticationFilter;
+import io.github.renhaowan.multilogin.core.RouterAuthenticationProvider;
+import io.github.renhaowan.multilogin.core.properties.MultiLoginProperties;
+import io.github.renhaowan.multilogin.core.properties.config.HandlerConfig;
+import io.github.renhaowan.multilogin.core.properties.config.LoginMethodConfig;
+import io.github.renhaowan.multilogin.core.service.BusinessAuthenticationLogic;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
