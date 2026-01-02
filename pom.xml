@@ -38,9 +38,9 @@
     </developers>
 
     <scm>
-        <connection>https://github.com/xiao-wan-520/multi-login-spring-security-starter.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com:xiao-wan-520/multi-login-spring-security-starter.git</developerConnection>
-        <url>https://github.com/xiao-wan-520/multi-login-spring-security-starter</url>
+        <connection>https://github.com/Renhao-Wan/multi-login-spring-security-starter.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:Renhao-Wan/multi-login-spring-security-starter.git</developerConnection>
+        <url>https://github.com/Renhao-Wan/multi-login-spring-security-starter</url>
     </scm>
 
     <properties>
