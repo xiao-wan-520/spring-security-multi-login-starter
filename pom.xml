@@ -16,7 +16,7 @@
 
     <name>Multi Login Spring Security Starter</name>
     <description>一个支持多端登录（手机号/邮箱/账号）的 Spring Security 扩展组件</description>
-    <url>https://github.com/xiao-wan-520/multi-login-spring-security-starter</url>
+    <url>https://github.com/Renhao-Wan/multi-login-spring-security-starter</url>
 
     <licenses>
         <license>

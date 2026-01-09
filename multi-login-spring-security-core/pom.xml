@@ -9,8 +9,8 @@
         <version>0.0.4</version>
     </parent>
 
-    <name>Multi Login - AutoConfigure</name>
-    <description>Auto configuration for multi-login starter.</description>
+    <name>Multi Login - Core</name>
+    <description>Core module for multi-login starter.</description>
     <artifactId>multi-login-spring-security-core</artifactId>
 
     <properties>
