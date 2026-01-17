@@ -17,7 +17,7 @@ public class BaseMultiLoginToken extends AbstractAuthenticationToken {
      * 登录请求所有参数集合
      */
     @Getter
-    private final Map<String, String> allParams;
+    private final Map<String, Object> allParams;
 
     /**
      * 客户端类型（如 PC、APP、H5）
@@ -39,7 +39,7 @@ public class BaseMultiLoginToken extends AbstractAuthenticationToken {
      * @param principalParamNames 主体参数名称列表（如用户名、手机号）
      * @param credentialParamNames 凭证参数名称列表（如密码、验证码）
      */
-    public BaseMultiLoginToken(Map<String, String> allParams, String clientType,
+    public BaseMultiLoginToken(Map<String, Object> allParams, String clientType,
                                List<String> principalParamNames, List<String> credentialParamNames) {
         // 未认证状态
         super(null);

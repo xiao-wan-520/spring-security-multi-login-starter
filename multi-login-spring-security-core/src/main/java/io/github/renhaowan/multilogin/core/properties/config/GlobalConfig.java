@@ -19,4 +19,10 @@ public class GlobalConfig {
 
     // 成功和失败处理回调
     private HandlerConfig handler = new HandlerConfig("defaultSuccessHandler", "defaultFailureHandler");
+
+    // 自定义参数提取器 Bean 名称
+    private String parameterExtractorBeanName = "formParameterExtractor";
+
+    // 自定义客户端类型提取器 Bean 名称
+    private String clientTypeExtractorBeanName = "headerClientTypeExtractor";
 }

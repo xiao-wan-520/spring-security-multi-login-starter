@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.github.renhao-wan</groupId>
         <artifactId>multi-login-spring-security-parent</artifactId>
-        <version>0.0.4</version>
+        <version>0.0.5</version>
     </parent>
 
     <name>Multi Login - Core</name>

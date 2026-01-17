@@ -1,8 +1,8 @@
 package io.github.renhaowan.multilogin.core;
 
-import io.github.renhaowan.multilogin.core.exception.MultiLoginException;
-import io.github.renhaowan.multilogin.core.properties.config.GlobalConfig;
 import io.github.renhaowan.multilogin.core.properties.config.LoginMethodConfig;
+import io.github.renhaowan.multilogin.core.service.extractor.ClientTypeExtractor;
+import io.github.renhaowan.multilogin.core.service.extractor.ParameterExtractor;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.Getter;
@@ -12,24 +12,25 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import java.util.*;
+import java.util.Map;
 
 /**
  * @author wan
  */
 public class DynamicAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
     private final LoginMethodConfig config;
-    private final GlobalConfig globalConfig;
-
+    private final ParameterExtractor parameterExtractor;
+    private final ClientTypeExtractor clientTypeExtractor;
     @Getter
     private final AntPathRequestMatcher antPathRequestMatcher;
 
-    public DynamicAuthenticationFilter(LoginMethodConfig config, GlobalConfig globalConfig, AuthenticationManager authenticationManager) {
+    public DynamicAuthenticationFilter(LoginMethodConfig config, ParameterExtractor parameterExtractor, ClientTypeExtractor clientTypeExtractor, AuthenticationManager authenticationManager) {
         // 设置 Filter 拦截路径
         super(new AntPathRequestMatcher(config.getProcessUrl(), config.getHttpMethod()));
         this.antPathRequestMatcher = new AntPathRequestMatcher(config.getProcessUrl(), config.getHttpMethod());
         this.config = config;
-        this.globalConfig = globalConfig;
+        this.parameterExtractor = parameterExtractor;
+        this.clientTypeExtractor = clientTypeExtractor;
         setAuthenticationManager(authenticationManager);
     }
 
@@ -38,10 +39,10 @@ public class DynamicAuthenticationFilter extends AbstractAuthenticationProcessin
             throws AuthenticationException {
 
         // 提取所有参数
-        Map<String, String> allParams = extractAllParameters(request);
+        Map<String, Object> allParams = parameterExtractor.extractParameters(request);
 
         // 提取客户端类型
-        String clientType = extractClientType(request);
+        String clientType = clientTypeExtractor.extractClientType(request);
 
         // 创建 Token 实例
         BaseMultiLoginToken token = new BaseMultiLoginToken(
@@ -55,46 +56,4 @@ public class DynamicAuthenticationFilter extends AbstractAuthenticationProcessin
         return this.getAuthenticationManager().authenticate(token);
     }
 
-    // 可以暴露接口使外部能够拓展，比如使用json提交的数据这里解析不了
-    private Map<String, String> extractAllParameters(HttpServletRequest request) {
-        Map<String, String> params = new HashMap<>();
-
-        // 合并所有参数名并去重
-        Set<String> allParamNames = new HashSet<>();
-        allParamNames.addAll(config.getParamName());
-        allParamNames.addAll(config.getPrincipalParamName());
-        allParamNames.addAll(config.getCredentialParamName());
-
-        for (String paramName : allParamNames) {
-            String value = request.getParameter(paramName);
-            if (value != null) {
-                params.put(paramName, value);
-            }
-        }
-        return params;
-    }
-
-    // 可以暴露接口使外部能欧拓展不使用请求头携带策略的方式
-    private String extractClientType(HttpServletRequest request) {
-        // 优先使用方法级配置，否则使用全局配置
-        String requestClientHeader = Optional.ofNullable(config.getRequestClientHeader())
-                .orElse(globalConfig.getRequestClientHeader());
-
-        // 客户端类型列表：优先使用方法级配置，否则使用全局配置
-        List<String> clientTypes = Optional.ofNullable(config.getClientTypes())
-                .orElse(globalConfig.getClientTypes());
-
-        String clientType = request.getHeader(requestClientHeader);
-
-        // 如果未找到 Header 或 Header 值不在配置列表中，默认使用配置的第一个客户端类型 (支持配置的第一个客户端类型)
-        if (clientType == null || !clientTypes.contains(clientType)) {
-            if (!clientTypes.isEmpty()) {
-                // 默认支持配置的第一个客户端类型
-                return clientTypes.get(0);
-            }
-            throw new MultiLoginException("Client type cannot be determined and no default type is configured.");
-        }
-
-        return clientType;
-    }
 }

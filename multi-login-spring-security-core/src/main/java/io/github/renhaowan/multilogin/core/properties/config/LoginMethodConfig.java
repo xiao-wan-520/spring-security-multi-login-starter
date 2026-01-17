@@ -38,4 +38,10 @@ public class LoginMethodConfig {
 
     // 如果配置，则覆盖 Global
     private HandlerConfig handler;
+
+    // 如果配置，则覆盖 Global
+    private String parameterExtractorBeanName;
+
+    // 如果配置，则覆盖 Global
+    private String clientTypeExtractorBeanName;
 }

@@ -51,6 +51,16 @@
       "defaultValue": "defaultFailureHandler"
     },
     {
+      "name": "multi-login.global.parameter-extractor-bean-name",
+      "type": "java.lang.String",
+      "description": "全局的自定义参数提取器 (ParameterExtractor) 的 Spring Bean 名称，如果设置，将作为所有登录方式的默认参数提取器."
+    },
+    {
+      "name": "multi-login.global.client-type-extractor-bean-name",
+      "type": "java.lang.String",
+      "description": "全局的自定义客户端类型提取器 (ClientTypeExtractor) 的 Spring Bean 名称，如果设置，将作为所有登录方式的默认客户端类型提取器."
+    },
+    {
       "name": "multi-login.methods",
       "type": "java.util.Map<java.lang.String, io.github.renhaowan.multilogin.core.properties.config.LoginMethodConfig>",
       "description": "定义每种登录方式（如 phone, email）的详细配置."
@@ -111,6 +121,16 @@
       "name": "multi-login.methods.*.handler.failure",
       "type": "java.lang.String",
       "description": "方法级别的认证失败处理器 Bean 名称."
+    },
+    {
+      "name": "multi-login.methods.*.parameter-extractor-bean-name",
+      "type": "java.lang.String",
+      "description": "自定义参数提取器 (ParameterExtractor) 的 Spring Bean 名称，如果设置，将覆盖默认的参数提取器."
+    },
+    {
+      "name": "multi-login.methods.*.client-type-extractor-bean-name",
+      "type": "java.lang.String",
+      "description": "自定义客户端类型提取器 (ClientTypeExtractor) 的 Spring Bean 名称，如果设置，将覆盖默认的客户端类型提取器."
     }
   ]
 }
